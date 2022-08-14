@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { trpc } from "../utils/trpc";
 import play from "../../public/play-example.jpg";
-import topHero from "../../public/sports.jpg";
+import topHero from "../../public/sports_small.jpg";
 
 type TechnologyCardProps = {
   name: string;
@@ -95,10 +95,14 @@ const Home: NextPage = () => {
           </h2>
           <div className="md:w-3/5 md:pl-6">
             <p className="leading-relaxed text-base">
-              Taxidermy bushwick celiac master cleanse microdosing seitan.
-              Fashion axe four dollar toast truffaut, direct trade kombucha
-              brunch williamsburg keffiyeh gastropub tousled squid meh taiyaki
-              drinking vinegar tacos.
+              If you’ve ever watched a football game you will see coaches
+              holding laminated cards. These cards are a subset of plays from
+              the coach’s play book they think may work for the game they are
+              playing. This lets them make decisions in the moment. A coach may
+              have 1000 plays in the play book but will only use a fraction in a
+              game situation. You can think of these this playbook as the same
+              thing; a guide of activities you can runu through when you need an
+              idea of what to do next.
             </p>
             <div className="flex md:mt-4 mt-6">
               {/* <button className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded">
@@ -135,6 +139,16 @@ const Home: NextPage = () => {
               trade kombucha brunch williamsburg keffiyeh gastropub tousled
               squid meh taiyaki drinking vinegar tacos.
             </p>
+            <ul>
+              <li>Document and teach how you build products</li>
+              <li>Provide shared languauge and understanding</li>
+              <li>
+                Understand the situations that teams typically face when
+                building products, so that we can provide tools and methods that
+                have worked well or we believe will woork well based on past
+                experiences
+              </li>
+            </ul>
             <div className="flex md:mt-4 mt-6">
               <button className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded">
                 Button
