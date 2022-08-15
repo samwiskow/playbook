@@ -5,6 +5,7 @@ import { trpc } from "../utils/trpc";
 import play from "../../public/play-example.jpg";
 import topHero from "../../public/sports_small.jpg";
 import Link from "next/link";
+import { getAllPlaysForHome } from "../lib/api";
 
 type TechnologyCardProps = {
   name: string;
@@ -265,7 +266,9 @@ const Home: NextPage = () => {
                   Discovery
                 </h2>
                 <p className="leading-relaxed">
-                  What are your <strong>customer's needs</strong>?
+                  What are your <strong>customer's needs</strong>? Go talk to
+                  them, define personas, confirm that you are solving the right
+                  problem.
                 </p>
               </div>
             </div>
@@ -299,7 +302,9 @@ const Home: NextPage = () => {
                   Definition
                 </h2>
                 <p className="leading-relaxed">
-                  What <strong>customer need</strong> are we solving for?
+                  What <strong>customer need</strong> are we solving for? What
+                  is the most important one? What are we going to do and what
+                  are we going to <strong>not do</strong>?
                 </p>
               </div>
             </div>
