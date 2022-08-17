@@ -20,12 +20,12 @@ const Preview: NextPage = () => {
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl font-medium text-gray-900">
-              We're working on it ...
+              We&apos;re working on it ...
             </h1>
             <h3 className="mb-4">By Wiskow Tech</h3>
             <p className="mb-8 leading-relaxed">
-              This page is coming soon, we're working hard on bringing it to
-              you, check back soon!
+              This page is coming soon, we&apos;re working hard on bringing it
+              to you, check back soon!
             </p>
             <div className="flex justify-center">
               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">

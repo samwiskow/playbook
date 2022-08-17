@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { trpc } from "../utils/trpc";
-import comingSoon from "../../public/coming_soon.jpg";
 import Link from "next/link";
 import { getAllPlaysForHome } from "../lib/api";
 
@@ -42,7 +40,7 @@ const Plays: NextPage<PlayProps> = ({ preview, allPlays }) => {
               <div className="h-1 w-20 bg-indigo-500 rounded"></div>
             </div>
             <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
-              In here you'll find our growing list of plays to help you
+              In here you&apos;ll find our growing list of plays to help you
               understand the things we can do as part of the product management
               process
             </p>
@@ -52,10 +50,12 @@ const Plays: NextPage<PlayProps> = ({ preview, allPlays }) => {
               {allPlays.map((play) => (
                 <div className="xl:w-1/4 md:w-1/2 p-4" key={play.slug}>
                   <div className="bg-gray-100 p-6 rounded-lg">
-                    <img
+                    <Image
                       className="h-40 rounded w-full object-cover object-center mb-6"
                       src="https://dummyimage.com/720x400"
                       alt="content"
+                      width={720}
+                      height={400}
                     />
                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
                       {play.processPhase}

@@ -50,15 +50,15 @@ const Home: NextPage<HomeProps> = ({ preview, allPlays }) => {
             <h3 className="mb-4">By Wiskow Tech</h3>
             <p className="mb-8 leading-relaxed">
               This site exists to help demistify the product management process.
-              There's a bunch of helpful resources contained in this site as
-              well as an explanation of the product management process and some
-              suggested steps to help you get going.
+              There&apos;s a bunch of helpful resources contained in this site
+              as well as an explanation of the product management process and
+              some suggested steps to help you get going.
             </p>
             <p className="mb-8 leading-relaxed">
               This is a passion project from an engineer who really believes in
               building the right things, the right way. Any feedback on this
-              site is greatly appreciated and contribuutions are welcome. It's
-              early days more features and more content to come.
+              site is greatly appreciated and contribuutions are welcome.
+              It&apos;s early days more features and more content to come.
             </p>
             <div className="flex justify-center">
               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
@@ -88,7 +88,7 @@ const Home: NextPage<HomeProps> = ({ preview, allPlays }) => {
       <section className="body-font bg-indigo-500 text-slate-100">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 md:w-2/5">
-            So what's a playbook?
+            So what&apos;s a playbook?
           </h2>
           <div className="md:w-3/5 md:pl-6">
             <p className="leading-relaxed text-base">
@@ -152,7 +152,7 @@ const Home: NextPage<HomeProps> = ({ preview, allPlays }) => {
         </div>
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 md:w-2/5">
-            And what's a play again?
+            And what&apos;s a play again?
           </h2>
           <div className="md:w-3/5 md:pl-6">
             <ul className="list-disc">
@@ -245,9 +245,9 @@ const Home: NextPage<HomeProps> = ({ preview, allPlays }) => {
                   Discovery
                 </h2>
                 <p className="leading-relaxed">
-                  What are your <strong>customer's needs</strong>? Go talk to
-                  them, define personas, confirm that you are solving the right
-                  problem.
+                  What are your <strong>customer&apos;s needs</strong>? Go talk
+                  to them, define personas, confirm that you are solving the
+                  right problem.
                 </p>
               </div>
             </div>
@@ -385,7 +385,7 @@ const Home: NextPage<HomeProps> = ({ preview, allPlays }) => {
                   Review, Repeat
                 </h2>
                 <p className="leading-relaxed">
-                  Did our solution solve the problem? What's the next{" "}
+                  Did our solution solve the problem? What&apos;s the next{" "}
                   <strong>evolution</strong> of the solution?
                 </p>
                 <p className="leading-relaxed">Sunset / Pivot / Continue</p>
