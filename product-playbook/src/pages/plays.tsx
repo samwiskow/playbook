@@ -48,24 +48,38 @@ const Plays: NextPage<PlayProps> = ({ preview, allPlays }) => {
           <div className="flex flex-wrap -m-4">
             <>
               {allPlays.map((play) => (
-                <div className="xl:w-1/4 md:w-1/2 p-4" key={play.slug}>
-                  <div className="bg-gray-100 p-6 rounded-lg">
-                    <Image
-                      className="h-40 rounded w-full object-cover object-center mb-6"
-                      src="https://dummyimage.com/720x400"
-                      alt="content"
-                      width={720}
-                      height={400}
-                    />
-                    <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                      {play.processPhase}
-                    </h3>
-                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                      {play.title}
-                    </h2>
-                    <p className="leading-relaxed text-base">{play.excerpt}</p>
+                <Link
+                  href={{
+                    pathname: "plays/[slug]",
+                    query: {
+                      slug: play.slug,
+                    },
+                  }}
+                  key={play.slug}
+                >
+                  <div className="xl:w-1/4 md:w-1/2 p-4" key={play.slug}>
+                    <div className="bg-gray-100 p-6 rounded-lg">
+                      <a>
+                        <Image
+                          className="h-40 rounded w-full object-cover object-center mb-6"
+                          src="https://dummyimage.com/720x400"
+                          alt="content"
+                          width={720}
+                          height={400}
+                        />
+                        <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
+                          {play.processPhase}
+                        </h3>
+                        <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                          {play.title}
+                        </h2>
+                        <p className="leading-relaxed text-base">
+                          {play.excerpt}
+                        </p>
+                      </a>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </>
           </div>

@@ -46,7 +46,9 @@ async function fetchGraphQL(query: string, preview = false) {
       },
       body: JSON.stringify({ query }),
     }
-  ).then((response) => response.json());
+  )
+    .then((response) => response.json())
+    .catch((e) => console.log(e));
 }
 
 function extractPlay(fetchResponse: any) {
@@ -57,7 +59,7 @@ function extractPlayEntries(fetchResponse: any) {
   return fetchResponse?.data?.playCollection?.items;
 }
 
-export async function getPreviewPostBySlug(slug: string) {
+export async function getPreviewPlayBySlug(slug: string) {
   const entry = await fetchGraphQL(
     `query {
         playCollection(where: { slug: "${slug}" }, preview: true, limit: 1) {
@@ -74,7 +76,7 @@ export async function getPreviewPostBySlug(slug: string) {
 export async function getAllPlaysWithSlug() {
   const entries = await fetchGraphQL(
     `query {
-        playCollection(where: { slug_exists: true }, order: createdDate_DESC) {
+        playCollection(where: { slug_exists: true }, order: dateCreated_DESC) {
         items {
           ${ALL_PLAYS_GRAPHQL_FIELDS}
         }
