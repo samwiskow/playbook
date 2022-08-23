@@ -249,11 +249,26 @@ export async function getStaticPaths() {
   const allPlays = await getAllPlaysWithSlug();
   // console.log("allPlays from static paths");
   // console.log(allPlays);
+  // const playsPaths = allPlays?.map(
+  //   ({ slug }: any) => `/plays/${slug}`
+  // );
+
+  // console.log(playsPaths);
+
+  // Get the paths we want to pre-render based on posts
+  const paths = allPlays.map(({ slug }: any) => ({
+    params: { slug },
+  }));
 
   return {
-    paths:
-      allPlays?.map(({ slug }: any) => `/plays/${slug}`) ??
-      [],
+    paths,
     fallback: true,
   };
+
+  // return {
+  //   paths:
+  //     allPlays?.map(({ slug }: any) => `/plays/${slug}`) ??
+  //     [],
+  //   fallback: true,
+  // };
 }
