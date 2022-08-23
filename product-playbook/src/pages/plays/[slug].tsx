@@ -13,6 +13,7 @@ import { StringDecoder } from 'string_decoder';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { ReactNode } from 'react';
+import { NextPage } from 'next';
 
 type Play = {
   slug: string;
@@ -130,11 +131,10 @@ function DetailItem({ item, content }: any) {
   );
 }
 
-export default function play({
+export default function Play({
   play,
-  morePosts,
   preview,
-}: Props) {
+}: Props): JSX.Element {
   const router = useRouter();
   if (!router.isFallback && !play) {
     return <ErrorPage statusCode={404} />;
@@ -144,8 +144,8 @@ export default function play({
   // console.log(play);
   // console.log(JSON.stringify(play.content));
 
-  const colour = getcolour(play.processPhase);
-  const particpants = play.participants?.join(', ');
+  const colour = getcolour(play?.processPhase);
+  const particpants = play?.participants?.join(', ');
 
   // map((item, i) => {
   //   if (i === 0) {
@@ -154,7 +154,7 @@ export default function play({
   //   return ', ' + item;
   // });
 
-  console.log(particpants);
+  // console.log(particpants);
 
   return (
     <>
@@ -183,17 +183,17 @@ export default function play({
                 </h2>
                 <DetailItem
                   item='Process Phase'
-                  content={play.processPhase}
+                  content={play?.processPhase}
                 />
-                {play.subPhase && (
+                {play?.subPhase && (
                   <DetailItem
                     item='Sub Phase'
-                    content={play.subPhase}
+                    content={play?.subPhase}
                   />
                 )}
                 <DetailItem
                   item='Diffculty'
-                  content={play.difficulty}
+                  content={play?.difficulty}
                 />
                 <DetailItem
                   item='Participants'
@@ -201,7 +201,7 @@ export default function play({
                 />
                 <DetailItem
                   item='Suggested Time'
-                  content={play.suggestedTime}
+                  content={play?.suggestedTime}
                 />
               </div>
             </div>
@@ -241,7 +241,6 @@ export async function getStaticProps({ params }: Params) {
   return {
     props: {
       play: data ?? null,
-      morePosts: data?.morePosts ?? null,
     },
   };
 }
