@@ -141,7 +141,7 @@ export default function play({
   }
   // console.log("play content: ");
   // console.log(play.content);
-  console.log(play);
+  // console.log(play);
   // console.log(JSON.stringify(play.content));
 
   const colour = getcolour(play.processPhase);
