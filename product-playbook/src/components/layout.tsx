@@ -174,6 +174,10 @@ const Layout = ({ preview, children }: Props) => {
       </footer>
 
       <Script
+        strategy="beforeInteractive"
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
         id="buy-me-coffee"
         data-name="BMC-Widget"
         data-cfasync="false"
