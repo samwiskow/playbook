@@ -131,21 +131,26 @@ function DetailItem({ item, content }: any) {
   );
 }
 
-export default function Play({
+const Play: NextPage<Props> = ({
   play,
   preview,
-}: Props): JSX.Element {
+}: Props) => {
   const router = useRouter();
   if (!router.isFallback && !play) {
     return <ErrorPage statusCode={404} />;
+  }
+
+  // Display loading until `getStaticProps()` finishes running, and populates the props.
+  if (router.isFallback) {
+    return <div>Loading...</div>;
   }
   // console.log("play content: ");
   // console.log(play.content);
   // console.log(play);
   // console.log(JSON.stringify(play.content));
 
-  const colour = getcolour(play?.processPhase);
-  const particpants = play?.participants?.join(', ');
+  const colour = getcolour(play.processPhase);
+  const particpants = play.participants?.join(', ');
 
   // map((item, i) => {
   //   if (i === 0) {
@@ -225,7 +230,7 @@ export default function Play({
       </section>
     </>
   );
-}
+};
 
 type Params = {
   params: {
@@ -272,3 +277,5 @@ export async function getStaticPaths() {
   //   fallback: true,
   // };
 }
+
+export default Play;
