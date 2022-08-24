@@ -137,12 +137,7 @@ const Play: NextPage<Props> = ({
 }: Props) => {
   const router = useRouter();
 
-  // Display loading until `getStaticProps()` finishes running, and populates the props.
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-
-  if (!router.isFallback && !play) {
+  if (!play) {
     return <ErrorPage statusCode={404} />;
   }
   // console.log("play content: ");
@@ -166,67 +161,73 @@ const Play: NextPage<Props> = ({
     <>
       <section className='text-gray-600 body-font bg-'>
         <div className='container px-5 py-24 mx-auto'>
-          <div
-            className={`flex flex-wrap w-full mb-20 underline-offset-2 border-b-4 pb-5 border-indigo-700`}
-          >
-            <div className='lg:w-1/2 w-full mb-6 lg:mb-0'>
-              <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>
-                {play?.title}
-              </h1>
-              <div className='h-1 w-20 bg-indigo-500 rounded'></div>
-            </div>
-            <p className='lg:w-1/2 w-full leading-relaxed text-gray-500'>
-              {play?.excerpt}
-            </p>
-          </div>
-          <div className='flex flex-wrap w-full mb-20 lg:flex-row flex-col'>
-            <div
-              className={`lg:w-1/4 w-auto ${colour} text-white`}
-            >
-              <div className='text-center my-4 p-2'>
-                <h2 className='mb-10 md:text-3xl text-2xl underline underline-offset-8'>
-                  Key Info
-                </h2>
-                <DetailItem
-                  item='Process Phase'
-                  content={play?.processPhase}
-                />
-                {play?.subPhase && (
-                  <DetailItem
-                    item='Sub Phase'
-                    content={play?.subPhase}
-                  />
-                )}
-                <DetailItem
-                  item='Diffculty'
-                  content={play?.difficulty}
-                />
-                <DetailItem
-                  item='Participants'
-                  content={particpants}
-                />
-                <DetailItem
-                  item='Suggested Time'
-                  content={play?.suggestedTime}
-                />
+          {router.isFallback ? (
+            <div>Loading...</div>
+          ) : (
+            <>
+              <div
+                className={`flex flex-wrap w-full mb-20 underline-offset-2 border-b-4 pb-5 border-indigo-700`}
+              >
+                <div className='lg:w-1/2 w-full mb-6 lg:mb-0'>
+                  <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>
+                    {play?.title}
+                  </h1>
+                  <div className='h-1 w-20 bg-indigo-500 rounded'></div>
+                </div>
+                <p className='lg:w-1/2 w-full leading-relaxed text-gray-500'>
+                  {play?.excerpt}
+                </p>
               </div>
-            </div>
-            <div className='lg:w-3/4 w-auto p-6'>
-              {router.isFallback ? (
-                <h1>Loading…</h1>
-              ) : (
-                <>
-                  <article className='mb-32'>
-                    {play &&
-                      documentToReactComponents(
-                        play?.content?.json,
-                        options
-                      )}
-                  </article>
-                </>
-              )}
-            </div>
-          </div>
+              <div className='flex flex-wrap w-full mb-20 lg:flex-row flex-col'>
+                <div
+                  className={`lg:w-1/4 w-auto ${colour} text-white`}
+                >
+                  <div className='text-center my-4 p-2'>
+                    <h2 className='mb-10 md:text-3xl text-2xl underline underline-offset-8'>
+                      Key Info
+                    </h2>
+                    <DetailItem
+                      item='Process Phase'
+                      content={play?.processPhase}
+                    />
+                    {play?.subPhase && (
+                      <DetailItem
+                        item='Sub Phase'
+                        content={play?.subPhase}
+                      />
+                    )}
+                    <DetailItem
+                      item='Diffculty'
+                      content={play?.difficulty}
+                    />
+                    <DetailItem
+                      item='Participants'
+                      content={particpants}
+                    />
+                    <DetailItem
+                      item='Suggested Time'
+                      content={play?.suggestedTime}
+                    />
+                  </div>
+                </div>
+                <div className='lg:w-3/4 w-auto p-6'>
+                  {router.isFallback ? (
+                    <h1>Loading…</h1>
+                  ) : (
+                    <>
+                      <article className='mb-32'>
+                        {play &&
+                          documentToReactComponents(
+                            play?.content?.json,
+                            options
+                          )}
+                      </article>
+                    </>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
     </>
