@@ -137,6 +137,10 @@ const Play: NextPage<Props> = ({
 }: Props) => {
   const router = useRouter();
 
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
   // if (!play) {
   //   return <ErrorPage statusCode={404} />;
   // }
@@ -249,7 +253,7 @@ export async function getStaticProps({ params }: Params) {
     props: {
       play: data ?? null,
     },
-    revalidate: 100,
+    revalidate: 1,
   };
 }
 
