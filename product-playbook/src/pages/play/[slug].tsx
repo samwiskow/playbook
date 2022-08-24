@@ -242,8 +242,8 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const data = await getPreviewPlayBySlug(params.slug);
-  // console.log("data from static props");
-  // console.log(data);
+  console.log('data from static props');
+  console.log(data);
 
   return {
     props: {
@@ -269,7 +269,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 
   // return {

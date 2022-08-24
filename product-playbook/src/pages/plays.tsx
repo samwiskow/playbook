@@ -56,12 +56,14 @@ const Plays: NextPage<PlayProps> = ({
             <>
               {allPlays.map((play) => (
                 <Link
-                  href={{
-                    pathname: 'play/[slug]',
-                    query: {
-                      slug: play.slug,
-                    },
-                  }}
+                  // href={{
+                  //   pathname: 'play/[slug]',
+                  //   query: {
+                  //     slug: play.slug,
+                  //   },
+                  // }}
+                  href='/play/[slug]'
+                  as={`/play/${play.slug}`}
                   key={play.slug}
                 >
                   <div
