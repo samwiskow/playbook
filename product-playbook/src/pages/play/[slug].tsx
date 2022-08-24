@@ -141,25 +141,15 @@ const Play: NextPage<Props> = ({
     return <h1>Loading...</h1>;
   }
 
-  // if (!play) {
-  //   return <ErrorPage statusCode={404} />;
-  // }
+  if (!play) {
+    return <ErrorPage statusCode={404} />;
+  }
+
   // console.log("play content: ");
-  // console.log(play.content);
   // console.log(play);
-  // console.log(JSON.stringify(play.content));
 
   const colour = getcolour(play?.processPhase);
   const particpants = play?.participants?.join(', ');
-
-  // map((item, i) => {
-  //   if (i === 0) {
-  //     return item;
-  //   }
-  //   return ', ' + item;
-  // });
-
-  // console.log(particpants);
 
   return (
     <>
@@ -246,14 +236,14 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const data = await getPreviewPlayBySlug(params.slug);
-  console.log('data from static props');
-  console.log(data);
+  // console.log('data from static props');
+  // console.log(data);
 
   return {
     props: {
       play: data ?? null,
     },
-    revalidate: 1,
+    revalidate: 100,
   };
 }
 
@@ -261,11 +251,6 @@ export async function getStaticPaths() {
   const allPlays = await getAllPlaysWithSlug();
   // console.log("allPlays from static paths");
   // console.log(allPlays);
-  // const playsPaths = allPlays?.map(
-  //   ({ slug }: any) => `/plays/${slug}`
-  // );
-
-  // console.log(playsPaths);
 
   // Get the paths we want to pre-render based on posts
   const paths = allPlays.map(({ slug }: any) => ({
@@ -276,13 +261,6 @@ export async function getStaticPaths() {
     paths,
     fallback: true,
   };
-
-  // return {
-  //   paths:
-  //     allPlays?.map(({ slug }: any) => `/plays/${slug}`) ??
-  //     [],
-  //   fallback: true,
-  // };
 }
 
 export default Play;

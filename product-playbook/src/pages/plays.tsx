@@ -4,12 +4,6 @@ import { trpc } from '../utils/trpc';
 import Link from 'next/link';
 import { getAllPlaysForHome } from '../lib/api';
 
-type TechnologyCardProps = {
-  name: string;
-  description: string;
-  documentation: string;
-};
-
 export async function getStaticProps({ preview = false }) {
   const allPlays =
     (await getAllPlaysForHome(preview)) ?? [];
@@ -33,8 +27,6 @@ const Plays: NextPage<PlayProps> = ({
     { text: 'from tRPC' },
   ]);
 
-  //   console.log(allPlays);
-
   return (
     <>
       <section className='text-gray-600 body-font'>
@@ -56,14 +48,12 @@ const Plays: NextPage<PlayProps> = ({
             <>
               {allPlays.map((play) => (
                 <Link
-                  // href={{
-                  //   pathname: 'play/[slug]',
-                  //   query: {
-                  //     slug: play.slug,
-                  //   },
-                  // }}
-                  href='/play/[slug]'
-                  as={`/play/${play.slug}`}
+                  href={{
+                    pathname: 'play/[slug]',
+                    query: {
+                      slug: play.slug,
+                    },
+                  }}
                   key={play.slug}
                 >
                   <div
