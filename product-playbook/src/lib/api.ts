@@ -29,26 +29,42 @@ const ALL_PLAYS_GRAPHQL_FIELDS = `
     subPhase
 `;
 
-async function fetchGraphQL(query: string, preview = false) {
-  return fetch(
-    // `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-    `https://graphql.contentful.com/content/v1/spaces/uzgtd6k3nbk7`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          preview
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : "vwjomBZceZQ8TWdCWvefTI-5MDvq1awP8bCYtwAv8k8"
-          // : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`,
-      },
-      body: JSON.stringify({ query }),
-    }
-  )
-    .then((response) => response.json())
-    .catch((e) => console.log(e));
+async function fetchGraphQL(
+  query: string,
+  preview = false
+) {
+  return (
+    fetch(
+      // `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+      `https://graphql.contentful.com/content/v1/spaces/uzgtd6k3nbk7`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${
+            preview
+              ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+              : 'vwjomBZceZQ8TWdCWvefTI-5MDvq1awP8bCYtwAv8k8'
+            // : process.env.CONTENTFUL_ACCESS_TOKEN
+          }`,
+        },
+        body: JSON.stringify({ query }),
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Something Went Wrong!');
+      })
+      // .then((responseJson) => {
+      //   console.log(responseJson);
+      // })
+      .catch((e) => {
+        console.log('\n\nerror in fetch\n\n');
+        console.log(e);
+      })
+  );
 }
 
 function extractPlay(fetchResponse: any) {
@@ -90,7 +106,7 @@ export async function getAllPlaysForHome(preview: boolean) {
   const entries = await fetchGraphQL(
     `query {
         playCollection(order: dateCreated_DESC, preview: ${
-          preview ? "true" : "false"
+          preview ? 'true' : 'false'
         }) {
         items {
           ${ALL_PLAYS_GRAPHQL_FIELDS}
