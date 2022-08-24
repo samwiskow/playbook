@@ -137,16 +137,16 @@ const Play: NextPage<Props> = ({
 }: Props) => {
   const router = useRouter();
 
-  if (!play) {
-    return <ErrorPage statusCode={404} />;
-  }
+  // if (!play) {
+  //   return <ErrorPage statusCode={404} />;
+  // }
   // console.log("play content: ");
   // console.log(play.content);
   // console.log(play);
   // console.log(JSON.stringify(play.content));
 
-  const colour = getcolour(play.processPhase);
-  const particpants = play.participants?.join(', ');
+  const colour = getcolour(play?.processPhase);
+  const particpants = play?.participants?.join(', ');
 
   // map((item, i) => {
   //   if (i === 0) {
