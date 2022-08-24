@@ -249,6 +249,7 @@ export async function getStaticProps({ params }: Params) {
     props: {
       play: data ?? null,
     },
+    revalidate: 100,
   };
 }
 
