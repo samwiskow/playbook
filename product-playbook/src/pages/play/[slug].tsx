@@ -136,13 +136,14 @@ const Play: NextPage<Props> = ({
   preview,
 }: Props) => {
   const router = useRouter();
-  if (!router.isFallback && !play) {
-    return <ErrorPage statusCode={404} />;
-  }
 
   // Display loading until `getStaticProps()` finishes running, and populates the props.
   if (router.isFallback) {
     return <div>Loading...</div>;
+  }
+
+  if (!router.isFallback && !play) {
+    return <ErrorPage statusCode={404} />;
   }
   // console.log("play content: ");
   // console.log(play.content);
@@ -267,7 +268,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 
   // return {
