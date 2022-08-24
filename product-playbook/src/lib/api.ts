@@ -55,7 +55,7 @@ async function fetchGraphQL(
         if (response.ok) {
           return response.json();
         }
-        throw new Error('Something Went Wrong!');
+        throw response;
       })
       // .then((responseJson) => {
       //   console.log(responseJson);
