@@ -1,0 +1,27 @@
+{
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "vscode-icons",
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "prettier.singleQuote": false,
+  "html.format.wrapAttributes": "force-expand-multiline",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.printWidth": 60,
+  "git.branchProtection": ["main"],
+  "git.enableCommitSigning": true,
+  "github.codespaces.defaultExtensions": [
+    "GitHub.codespaces",
+    "GitHub.vscode-pull-request-github",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ],
+  "prettier.jsxSingleQuote": false,
+  "editor.tabSize": 2
+}
