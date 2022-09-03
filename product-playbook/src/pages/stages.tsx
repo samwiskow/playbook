@@ -37,9 +37,42 @@ export async function getStaticProps({ preview = false }) {
 }
 
 const discoveryStrings = [
-  "Start Here",
-  "Then on the next bit",
-  "Finish here",
+  "Understand your customer's needs",
+  "Create a complete picture of your customer",
+  "Collect customer feedback",
+  "Listen, really listen",
+  "Be Objective",
+  "Understand the problems",
+  "Test your assumptions",
+];
+
+const definitionStrings = [
+  "Pick the problem you want to solve",
+  "Decide on a scope",
+  "Be explicit on what you won't do",
+  "Create a roadmap",
+  "Start crafting your user stories",
+  "Define the MVP",
+];
+
+const designStrings = [
+  "Brainstorm",
+  "Show stuff to you customer",
+  "Create mockups",
+  "Rapid prototyping",
+  "Use Fake features",
+  "Get your Landing page right",
+  "Validate your solution",
+];
+
+const deliveryStrings = [
+  "Scope and estimate",
+  "Refine your backlog & roadmap",
+  "Build your product",
+  "Iterate",
+  "Run retros",
+  "Run A/B tests",
+  "Launch your GTM plan",
 ];
 
 type ListItemProps = {
@@ -114,7 +147,7 @@ const ChatBubble: React.FC = () => (
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    stroke-width="1.5"
+    strokeWidth="1.5"
     stroke="currentColor"
     className="w-6 h-6"
   >
@@ -194,32 +227,13 @@ const Playbook: NextPage<PlaybookProps> = ({
                 <h1 className="text-5xl pb-4 mb-4 border-b border-gray-200 leading-none">
                   Discovery
                 </h1>
-                {discoveryStrings.map((item) => (
-                  <ListItem icon={<Search />}>
+                {discoveryStrings.map((item, index) => (
+                  <ListItem key={index} icon={<Search />}>
                     {item}
                   </ListItem>
                 ))}
-                <p className="flex items-center mb-6">
-                  <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                    <Search />
-                  </span>
-                  Mixtape chillwave tumeric
-                </p>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
-                  Button
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-                <p className="text-xs mt-3">
+
+                <p className="text-xs mt-auto border-t-4 border-slate-100 pt-4">
                   Start by figuring out what the right set
                   of problems to solve are.
                 </p>
@@ -237,24 +251,16 @@ const Playbook: NextPage<PlaybookProps> = ({
                   Definition
                 </h1>
 
-                <ListItem icon={<ChatBubble />}>
-                  Some list item I should probably array.map
-                </ListItem>
-                <button className="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">
-                  Button
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
-                    viewBox="0 0 24 24"
+                {definitionStrings.map((item, index) => (
+                  <ListItem
+                    key={index}
+                    icon={<ChatBubble />}
                   >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-                <p className="text-xs mt-3">
+                    {item}
+                  </ListItem>
+                ))}
+
+                <p className="text-xs mt-auto border-t-4 border-slate-100 pt-4">
                   Then pick one of those problems to focus
                   on
                 </p>
@@ -268,25 +274,13 @@ const Playbook: NextPage<PlaybookProps> = ({
                 <h1 className="text-5xl leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                   Design
                 </h1>
+                {designStrings.map((item, index) => (
+                  <ListItem key={index} icon={<Beaker />}>
+                    {item}
+                  </ListItem>
+                ))}
 
-                <ListItem icon={<Beaker />}>
-                  Some list item
-                </ListItem>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
-                  Button
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-                <p className="text-xs mt-3">
+                <p className="text-xs mt-auto border-t-4 border-slate-100 pt-4">
                   Show your users what the solutions to the
                   problem should look and feel like
                 </p>
@@ -300,40 +294,13 @@ const Playbook: NextPage<PlaybookProps> = ({
                 <h1 className="text-5xl leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                   Delivery
                 </h1>
-                <ListItem icon={<Server />}>
-                  Some list item
-                </ListItem>
-                <p className="flex items-center mb-6">
-                  <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                    <svg
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.5"
-                      className="w-3 h-3"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M20 6L9 17l-5-5"></path>
-                    </svg>
-                  </span>
-                  Mixtape chillwave tumeric
-                </p>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
-                  Button
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-auto"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-                <p className="text-xs mt-3">
+                {deliveryStrings.map((item, index) => (
+                  <ListItem key={index} icon={<Server />}>
+                    {item}
+                  </ListItem>
+                ))}
+
+                <p className="text-xs mt-auto border-t-4 border-slate-100 pt-4">
                   Build it, Launch it, Run it, Measure it!
                   Discover the next problem.
                 </p>
@@ -413,8 +380,8 @@ const Playbook: NextPage<PlaybookProps> = ({
                 <li>Endless options</li>
                 <li>Proprietary data formats</li>
                 <li>
-                  Hiring dozens of employees before you've
-                  launched
+                  Hiring dozens of employees before
+                  you&apos;ve launched
                 </li>
                 <li>
                   Lots of hypotheticals, instead of
