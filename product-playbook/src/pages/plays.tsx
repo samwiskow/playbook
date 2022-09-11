@@ -49,44 +49,72 @@ const Plays: NextPage<PlayProps> = ({
             </p>
           </div>
           <div className="flex flex-wrap -m-4">
+            {/* <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-1"> */}
             <>
-              {allPlays.map((play) => (
-                <Link
-                  href={{
-                    pathname: "plays/[slug]",
-                    query: {
-                      slug: play.slug,
-                    },
-                  }}
-                  key={play.slug}
-                >
-                  <div
-                    className="xl:w-1/4 md:w-1/2 p-2 cursor-pointer"
+              {allPlays.map((play) => {
+                const getColor = (processPhase: string) => {
+                  switch (processPhase) {
+                    case "Discovery":
+                      return { background: "#10B981" };
+                    case "Definition":
+                      return { background: "#F59E0B" };
+
+                    case "Design":
+                      return { background: "#F43F5E" };
+
+                    case "Delivery":
+                      return { background: "#0EA5E9" };
+
+                    default:
+                      return {};
+                  }
+                };
+                const colour = getColor(play.processPhase);
+
+                return (
+                  <Link
+                    href={{
+                      pathname: "plays/[slug]",
+                      query: {
+                        slug: play.slug,
+                      },
+                    }}
                     key={play.slug}
                   >
-                    <div className="bg-gray-100 p-6 rounded-lg">
-                      <a>
-                        <Image
+                    <div
+                      // Flex
+                      className="xl:w-1/4 md:w-1/2 p-2 cursor-pointer"
+                      // Grid
+                      // className="p-2 cursor-pointer"
+                      key={play.slug}
+                    >
+                      <div
+                        className="bg-gray-100 p-6 rounded-lg text-white"
+                        style={colour}
+                      >
+                        <a>
+                          {/* <Image
                           className="h-40 rounded w-full object-cover object-center mb-6"
                           src="https://dummyimage.com/720x400"
                           alt="content"
                           width={720}
                           height={400}
-                        />
-                        <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                          {play.processPhase}
-                        </h3>
-                        <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                          {play.title}
-                        </h2>
-                        <p className="leading-relaxed text-base">
-                          {play.excerpt}
-                        </p>
-                      </a>
+                        /> */}
+                          <h3 className="tracking-widest text-indigo-800 text-s font-medium title-font">
+                            {play.processPhase}
+                          </h3>
+                          <h2 className="text-lg text-white font-medium title-font mb-4">
+                            {play.title}
+                          </h2>
+                          <p className="leading-relaxed text-base">
+                            {play.excerpt}
+                          </p>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </>
           </div>
         </div>
